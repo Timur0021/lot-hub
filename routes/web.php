@@ -18,4 +18,9 @@ Route::prefix('admin')
 /**
  * AUTH
  */
-Route::get('/admin/login', [LoginController::class, 'loginPage'])->name('login');
+Route::prefix('admin')
+    ->middleware('guest.admin')
+    ->group(function () {
+        Route::get('/login', [LoginController::class, 'loginPage'])->name('login');
+        Route::post('/', [LoginController::class, 'login'])->name('login.post');
+    });
