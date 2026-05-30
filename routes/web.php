@@ -8,10 +8,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::prefix('auth')->name('auth.')->group(function () {
-        Route::get('login', [LoginController::class, 'loginPage'])->name('login-page');
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('auth:admin')
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
-});
+
+/**
+ * AUTH
+ */
+Route::get('/admin/login', [LoginController::class, 'loginPage'])->name('login');

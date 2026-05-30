@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Model
 {
+    use HasRoles;
+
     protected $table = 'admins';
 
     /**
