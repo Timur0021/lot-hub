@@ -44,4 +44,9 @@ class Admin extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getRoleAttribute(): ?string
+    {
+        return $this->roles()->first()?->name;
+    }
 }

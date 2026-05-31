@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Team\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,13 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+        /**
+         * TEAM
+        */
+        Route::prefix('team')
+            ->name('team.')
+            ->group(function () {
+                Route::get('/', [IndexController::class, 'index'])->name('index');
+            });
     });
