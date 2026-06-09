@@ -9,9 +9,9 @@
                     <h3 class="card-title">Admins Table</h3>
 
                     <div class="card-tools d-flex align-items-center">
-                        <button type="button" class="btn btn-outline-primary btn-lg px-4  mr-4">
+                        <a href="{{ route('admin.team.create') }}" type="button" class="btn btn-outline-primary btn-lg px-4  mr-4">
                             Create
-                        </button>
+                        </a>
 
                         <div class="input-group" style="width: 300px;">
                             <input type="text" name="table_search"
