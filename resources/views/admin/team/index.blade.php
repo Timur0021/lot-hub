@@ -35,6 +35,7 @@
                             <th>User</th>
                             <th>Role</th>
                             <th>Date</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,29 @@
                                     <td>{{ $admin->name }}</td>
                                     <td><span class="tag tag-success">{{ $admin->role }}</span></td>
                                     <td>{{ $admin->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}</td>
+                                    <td>
+                                        <a
+                                            href="{{ route('admin.team.edit', $admin->id) }}"
+                                            class="btn btn-sm btn-primary"
+                                        >
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+                                        <form
+                                            action="{{ route('admin.team.delete', $admin->id) }}"
+                                            method="POST"
+                                            style="display:inline-block"
+                                            onsubmit="return confirm('Are you sure?')"
+                                        >
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
