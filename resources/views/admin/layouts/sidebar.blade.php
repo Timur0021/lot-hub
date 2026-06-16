@@ -37,7 +37,10 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a
+                        href="#"
+                        class="nav-link active"
+                    >
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -46,27 +49,45 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
+                            <a
+                                href="./index.html"
+                                class="nav-link active"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
+                                <p>
+                                    Dashboard v1
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a
+                                href="./index2.html"
+                                class="nav-link"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
+                                <p>
+                                    Dashboard v2
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a
+                                href="./index3.html"
+                                class="nav-link"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>
+                                    Dashboard v3
+                                </p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a
+                        href="#"
+                        class="nav-link active"
+                    >
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Team
@@ -75,15 +96,36 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.team.index') }}" class="nav-link active">
+                            <a
+                                href="{{ route('admin.team.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.team.*') ? 'active' : '' }}"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Admins</p>
+                                <p>
+                                    Admins
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a
+                                href="{{ route('admin.roles.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}"
+                            >
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Roles
+                                </p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a
+                        href="#"
+                        class="nav-link"
+                    >
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Tables
@@ -92,21 +134,36 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a
+                                href="pages/tables/simple.html"
+                                class="nav-link"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Tables</p>
+                                <p>
+                                    Simple Tables
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
+                            <a
+                                href="pages/tables/data.html"
+                                class="nav-link"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>DataTables</p>
+                                <p>
+                                    DataTables
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/jsgrid.html" class="nav-link">
+                            <a
+                                href="pages/tables/jsgrid.html"
+                                class="nav-link"
+                            >
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>jsGrid</p>
+                                <p>
+                                    jsGrid
+                                </p>
                             </a>
                         </li>
                     </ul>

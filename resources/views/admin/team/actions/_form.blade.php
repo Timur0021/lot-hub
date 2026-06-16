@@ -8,8 +8,6 @@
     <label class="form-label">Photo</label>
 
     <div class="d-flex align-items-center gap-4">
-
-        {{-- Preview --}}
         <div>
             @php
                 $avatar = isset($admin)
@@ -26,7 +24,6 @@
             >
         </div>
 
-        {{-- Right side --}}
         <div class="ms-auto d-flex flex-column align-items-end">
 
             <input
@@ -42,7 +39,6 @@
                 Upload photo
             </label>
 
-            {{-- 🔥 просто нормальний правий текст --}}
             <div class="text-muted small mt-2 text-end">
                 JPG, PNG, WEBP (max 2MB)
             </div>
@@ -52,7 +48,7 @@
     </div>
 
     @error('avatar')
-    <span class="invalid-feedback d-block">{{ $message }}</span>
+        <span class="invalid-feedback d-block">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">

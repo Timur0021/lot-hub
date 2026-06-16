@@ -1,14 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\Auth\LogoutController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\Team\CreateController;
-use App\Http\Controllers\Admin\Team\DeleteController;
-use App\Http\Controllers\Admin\Team\EditController;
-use App\Http\Controllers\Admin\Team\IndexController;
-use App\Http\Controllers\Admin\Team\StoreController;
-use App\Http\Controllers\Admin\Team\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,8 +12,8 @@ Route::get('/', function () {
 Route::prefix('admin')
     ->middleware('guest.admin')
     ->group(function () {
-        Route::get('/login', [LoginController::class, 'loginPage'])->name('login');
-        Route::post('/', [LoginController::class, 'login'])->name('login.post');
+        Route::get('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'loginPage'])->name('login');
+        Route::post('/', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('login.post');
     });
 
 /**
@@ -32,8 +23,8 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware('auth:admin')
     ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+        Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [\App\Http\Controllers\Admin\Auth\LogoutController::class, 'logout'])->name('logout');
 
         /**
          * TEAM
@@ -41,11 +32,22 @@ Route::prefix('admin')
         Route::prefix('team')
             ->name('team.')
             ->group(function () {
-                Route::get('/', [IndexController::class, 'index'])->name('index');
-                Route::get('/create', [CreateController::class, 'create'])->name('create');
-                Route::post('/', [StoreController::class, 'store'])->name('store');
-                Route::get('/{admin}/edit', [EditController::class, 'edit'])->name('edit');
-                Route::put('/{admin}', [UpdateController::class, 'update'])->name('update');
-                Route::delete('/{admin}', [DeleteController::class, 'delete'])->name('delete');
+                Route::get('/', [\App\Http\Controllers\Admin\Team\IndexController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\Admin\Team\CreateController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\Admin\Team\StoreController::class, 'store'])->name('store');
+                Route::get('/{admin}/edit', [\App\Http\Controllers\Admin\Team\EditController::class, 'edit'])->name('edit');
+                Route::put('/{admin}', [\App\Http\Controllers\Admin\Team\UpdateController::class, 'update'])->name('update');
+                Route::delete('/{admin}', [\App\Http\Controllers\Admin\Team\DeleteController::class, 'delete'])->name('delete');
+            });
+
+        /**
+         * ROLES
+        */
+        Route::prefix('roles')
+            ->name('roles.')
+            ->group(function () {
+                Route::get('/', [\App\Http\Controllers\Admin\Roles\IndexController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\Admin\Roles\CreateController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\Admin\Roles\StoreController::class, 'store'])->name('store');
             });
     });
