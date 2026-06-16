@@ -13,7 +13,7 @@ class IndexController extends Controller
     public function index(Request $request): View
     {
         $search = $request->input('table_search');
-        $per_page = (int)$request->input('per_page', 5);
+        $per_page = $request->input('per_page', 5);
 
         $admins = Admin::query()
             ->when($search, function (Builder $query, $search) {
