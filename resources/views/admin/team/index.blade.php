@@ -31,19 +31,35 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Avatar</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>Role</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Avatar
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Role
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Actions
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                             @forelse($admins as $admin)
                                 <tr>
-                                    <td>{{ $admin->id }}</td>
+                                    <td>
+                                        {{ $admin->id }}
+                                    </td>
                                     <td>
                                         <img
                                             src="{{ $admin->getFirstMediaUrl('avatar') ?: asset('assets/dist/img/user2-160x160.jpg') }}"
@@ -52,10 +68,20 @@
                                             alt="image"
                                         >
                                     </td>
-                                    <td>{{ $admin->name }}</td>
-                                    <td>{{ $admin->last_name }}</td>
-                                    <td><span class="tag tag-success">{{ $admin->role }}</span></td>
-                                    <td>{{ $admin->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}</td>
+                                    <td>
+                                        {{ $admin->name }}
+                                    </td>
+                                    <td>
+                                        {{ $admin->last_name }}
+                                    </td>
+                                    <td>
+                                        <span class="tag tag-success">
+                                            {{ $admin->role }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {{ $admin->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}
+                                    </td>
                                     <td>
                                         <a
                                             href="{{ route('admin.team.edit', $admin->id) }}"
