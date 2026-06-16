@@ -13,17 +13,9 @@
                             Create
                         </a>
 
-                        <div class="input-group" style="width: 300px;">
-                            <input type="text" name="table_search"
-                                   class="form-control form-control-lg"
-                                   placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                        <form method="GET" action="{{ route('admin.team.index') }}" class="d-flex">
+                            <x-admin.search-input name="admin_search" width="350px"/>
+                        </form>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -42,6 +34,9 @@
                             </th>
                             <th>
                                 Last Name
+                            </th>
+                            <th>
+                                Email
                             </th>
                             <th>
                                 Role
@@ -73,6 +68,9 @@
                                     </td>
                                     <td>
                                         {{ $admin->last_name }}
+                                    </td>
+                                    <td>
+                                        {{ $admin->email }}
                                     </td>
                                     <td>
                                         <span class="tag tag-success">
@@ -118,6 +116,8 @@
                         </tbody>
                     </table>
                 </div>
+
+                <x-admin.pagination :paginator="$admins" />
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
