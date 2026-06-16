@@ -32,6 +32,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Avatar</th>
                             <th>Name</th>
                             <th>Last Name</th>
                             <th>Role</th>
@@ -43,6 +44,14 @@
                             @forelse($admins as $admin)
                                 <tr>
                                     <td>{{ $admin->id }}</td>
+                                    <td>
+                                        <img
+                                            src="{{ $admin->getFirstMediaUrl('avatar') ?: asset('assets/dist/img/user2-160x160.jpg') }}"
+                                            style="width: 50px; height: 50px; object-fit: cover;"
+                                            class="rounded-circle"
+                                            alt="image"
+                                        >
+                                    </td>
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->last_name }}</td>
                                     <td><span class="tag tag-success">{{ $admin->role }}</span></td>
