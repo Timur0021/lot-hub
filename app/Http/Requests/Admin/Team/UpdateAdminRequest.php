@@ -27,6 +27,8 @@ class UpdateAdminRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['nullable', 'string', 'max:255'],
+            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'email' => [
                 'required',
                 'email',
@@ -52,6 +54,9 @@ class UpdateAdminRequest extends FormRequest
             'name.required' => 'Name is required.',
             'name.string' => 'Name must be a valid string.',
             'name.max' => 'Name must not exceed 255 characters.',
+
+            'last_name.string' => 'Last name must be a valid string.',
+            'last_name.max' => 'Last name must not exceed 255 characters.',
 
             'email.required' => 'Email is required.',
             'email.email' => 'Please provide a valid email address.',

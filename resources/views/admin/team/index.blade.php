@@ -32,7 +32,8 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User</th>
+                            <th>Name</th>
+                            <th>Last Name</th>
                             <th>Role</th>
                             <th>Date</th>
                             <th>Actions</th>
@@ -43,6 +44,7 @@
                                 <tr>
                                     <td>{{ $admin->id }}</td>
                                     <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->last_name }}</td>
                                     <td><span class="tag tag-success">{{ $admin->role }}</span></td>
                                     <td>{{ $admin->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}</td>
                                     <td>

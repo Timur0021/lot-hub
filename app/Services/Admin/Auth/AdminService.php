@@ -21,9 +21,15 @@ class AdminService
             $admin = Admin::query()
                 ->create([
                     'name' => $data['name'],
+                    'last_name' => $data['last_name'] ?? null,
                     'email' => $data['email'],
                     'password' => Hash::make($data['password']),
                 ]);
+
+            if (!empty($data['avatar'])) {
+                $admin->addMedia($data['avatar'])
+                    ->toMediaCollection('avatar');
+            }
 
             $role = Role::query()->findOrFail($data['role']);
 
@@ -54,11 +60,19 @@ class AdminService
         try {
             $admin->update([
                 'name' => $data['name'],
+                'last_name' => $data['last_name'] ?? null,
                 'email' => $data['email'],
                 'password' => !empty($data['password'])
                     ? Hash::make($data['password'])
                     : $admin->password,
             ]);
+
+            if (!empty($data['avatar'])) {
+                $admin->clearMediaCollection('avatar');
+
+                $admin->addMedia($data['avatar'])
+                    ->toMediaCollection('avatar');
+            }
 
             if (!empty($data['role'])) {
                 $role = Role::query()->findOrFail($data['role']);

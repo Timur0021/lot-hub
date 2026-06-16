@@ -2,12 +2,16 @@
 
 namespace App\Models\Admin;
 
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements HasMedia
 {
     use HasRoles;
+    use InteractsWithMedia;
 
     protected $table = 'admins';
 
@@ -18,6 +22,7 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
     ];
@@ -43,6 +48,22 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('webp')
+            ->format('webp')
+            ->nonQueued();
+    }
+
+    public function getAvatarAttribute(): array|null|string
+    {
+        return $this->getMedia('avatar')->map(function (Media $media) {
+            return $media->hasGeneratedConversion('webp')
+                ? $media->getUrl('webp')
+                : $media->getUrl();
+        })->toArray()[0] ?? null;
     }
 
     public function getRoleAttribute(): ?string
