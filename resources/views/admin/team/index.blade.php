@@ -8,14 +8,15 @@
                 <div class="card-header">
                     <h3 class="card-title">Admins Table</h3>
 
-                    <div class="card-tools d-flex align-items-center">
+                    <div class="card-tools d-flex align-items-center gap-2">
+                        <x-admin.per-page />
+
                         <a href="{{ route('admin.team.create') }}" type="button" class="btn btn-outline-primary btn-lg px-4  mr-4">
                             Create
                         </a>
 
-                        <form method="GET" action="{{ route('admin.team.index') }}" class="d-flex">
-                            <x-admin.search-input name="admin_search" width="350px"/>
-                        </form>
+
+                        <x-admin.search-input name="admin_search" width="350px"/>
                     </div>
                 </div>
                 <!-- /.card-header -->

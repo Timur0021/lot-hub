@@ -13,6 +13,7 @@ class IndexController extends Controller
     public function index(Request $request): View
     {
         $search = $request->input('table_search');
+        $per_page = (int)$request->input('per_page', 5);
 
         $admins = Admin::query()
             ->when($search, function (Builder $query, $search) {
@@ -22,7 +23,7 @@ class IndexController extends Controller
                         ->orWhereRaw('LOWER(email) LIKE ?', ["%{$search}%"]);
                 });
             })
-            ->paginate(10);
+            ->paginate($per_page);
 
         return view('admin.team.index', compact('admins'));
     }
