@@ -11,7 +11,9 @@
 
                 <div class="card-body">
                     <form action="{{ route('admin.roles.edit', $role->id) }}" method="POST">
-                        @include('admin.team.actions._form')
+                        @include('admin.roles.actions._form', [
+                            'role' => $role
+                        ])
                     </form>
                 </div>
             </div>
