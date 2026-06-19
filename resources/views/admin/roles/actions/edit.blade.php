@@ -10,7 +10,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.roles.edit', $role->id) }}" method="POST">
+                    <form action="{{ route('admin.roles.update', $role->id) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+
                         @include('admin.roles.actions._form', [
                             'role' => $role
                         ])

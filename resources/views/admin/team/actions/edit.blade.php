@@ -11,6 +11,9 @@
 
                 <div class="card-body">
                     <form action="{{ route('admin.team.update', $admin->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
                         @include('admin.team.actions._form', [
                             'admin' => $admin
                         ])

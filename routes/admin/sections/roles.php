@@ -15,5 +15,5 @@ Route::prefix('roles')
         Route::post('/', [StoreController::class, 'store'])->name('store');
 
         Route::get('/{role}/edit', [EditController::class, 'edit'])->name('edit');
-        Route::put('/{role}', [UpdateController::class, 'update'])->name('update');
+        Route::patch('/{role}', [UpdateController::class, 'update'])->name('update');
     });

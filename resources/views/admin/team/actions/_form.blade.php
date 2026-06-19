@@ -1,9 +1,3 @@
-@csrf
-
-@if(isset($admin))
-    @method('PUT')
-@endif
-
 <div class="mb-3">
     <label class="form-label">Photo</label>
 
