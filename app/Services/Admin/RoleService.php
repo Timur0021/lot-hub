@@ -35,4 +35,33 @@ class RoleService
             throw $e;
         }
     }
+
+    /**
+     * @param Role $role
+     * @param array $data
+     * @return Role
+     * @throws Throwable
+     */
+    public function update(Role $role, array $data): Role
+    {
+        try {
+            $role->update([
+                'name' => $data['name'],
+            ]);
+
+            return $role;
+        } catch (Throwable $e) {
+            Log::error(
+                json_encode([
+                    'success' => false,
+                    'message' => 'Server error',
+                    'error' => $e->getMessage(),
+                    'line' => $e->getLine(),
+                    'file' => $e->getFile(),
+                ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+            );
+
+            throw $e;
+        }
+    }
 }
