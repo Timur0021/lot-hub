@@ -59,20 +59,20 @@
                                             <i class="fas fa-edit"></i>
                                             Edit
                                         </a>
-{{--                                        <form--}}
-{{--                                            action="{{ route('admin.team.delete', $admin->id) }}"--}}
-{{--                                            method="POST"--}}
-{{--                                            style="display:inline-block"--}}
-{{--                                            onsubmit="return confirm('Are you sure?')"--}}
-{{--                                        >--}}
-{{--                                            @csrf--}}
-{{--                                            @method('DELETE')--}}
+                                        <form
+                                            action="{{ route('admin.roles.delete', $role->id) }}"
+                                            method="POST"
+                                            style="display:inline-block"
+                                            onsubmit="return confirm('Are you sure?')"
+                                        >
+                                            @csrf
+                                            @method('DELETE')
 
-{{--                                            <button type="submit" class="btn btn-sm btn-danger">--}}
-{{--                                                <i class="fas fa-trash"></i>--}}
-{{--                                                Delete--}}
-{{--                                            </button>--}}
-{{--                                        </form>--}}
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

@@ -11,6 +11,7 @@
 
                 <div class="card-body">
                     <form action="{{ route('admin.roles.store') }}" method="POST">
+                        @csrf
                         @include('admin.roles.actions._form')
                     </form>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Roles\CreateController;
+use App\Http\Controllers\Admin\Roles\DeleteController;
 use App\Http\Controllers\Admin\Roles\EditController;
 use App\Http\Controllers\Admin\Roles\IndexController;
 use App\Http\Controllers\Admin\Roles\StoreController;
@@ -16,4 +17,5 @@ Route::prefix('roles')
 
         Route::get('/{role}/edit', [EditController::class, 'edit'])->name('edit');
         Route::patch('/{role}', [UpdateController::class, 'update'])->name('update');
+        Route::delete('/{role}', [DeleteController::class, 'delete'])->name('delete');
     });
