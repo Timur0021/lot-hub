@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Team;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Team\StoreAdminRequest;
-use App\Services\Admin\Auth\AdminService;
+use App\Http\Requests\Admin\Team\Admins\StoreAdminRequest;
+use App\Services\Admin\AdminService;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
 
