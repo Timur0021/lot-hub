@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.roles.edit') }}" method="POST">
+                    <form action="{{ route('admin.roles.edit', $role->id) }}" method="POST">
                         @include('admin.team.actions._form')
                     </form>
                 </div>

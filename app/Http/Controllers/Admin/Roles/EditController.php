@@ -11,6 +11,6 @@ class EditController extends Controller
 {
     public function edit(Role $role): View
     {
-        return view('admin.roles.edit', compact('role'));
+        return view('admin.roles.actions.edit', compact('role'));
     }
 }
