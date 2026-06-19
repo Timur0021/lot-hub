@@ -73,6 +73,13 @@
                                                 Delete
                                             </button>
                                         </form>
+                                        <a
+                                            href="{{ route('admin.roles.permissions', $role->id) }}"
+                                            class="btn btn-sm btn-warning"
+                                        >
+                                            <i class="fas fa-key"></i>
+                                            Permissions
+                                        </a>
                                     </td>
                                 </tr>
                             @empty
