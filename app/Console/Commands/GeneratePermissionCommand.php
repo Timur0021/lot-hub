@@ -20,7 +20,11 @@ class GeneratePermissionCommand extends Command
         $modelPath = app_path('Models');
 
         $models = collect(File::allFiles($modelPath))
-            ->map(fn ($file) => $file->getFilenameWithoutExtension());
+            ->map(fn ($file) => $file->getPathname())
+            ->map(fn ($path) => $this->getClassFromFile($path))
+            ->filter()
+            ->unique()
+            ->values();
 
         $actions = [
             'view',
@@ -29,11 +33,19 @@ class GeneratePermissionCommand extends Command
             'delete',
         ];
 
+        $existing = Permission::query()
+            ->pluck('name')
+            ->toArray();
+
         foreach ($models as $model) {
-            $name = strtolower($model);
+            $name = strtolower(class_basename($model)) . 's';
 
             foreach ($actions as $action) {
                 $permissionName = "{$name}.{$action}";
+
+                if (in_array($permissionName, $existing, true)) {
+                    continue;
+                }
 
                 Permission::query()
                     ->firstOrCreate([
@@ -44,5 +56,19 @@ class GeneratePermissionCommand extends Command
         }
 
         $this->info('Permissions generated successfully.');
+    }
+
+    private function getClassFromFile(string $path): ?string
+    {
+        $content = file_get_contents($path);
+
+        preg_match('/namespace\s+(.+?);/', $content, $ns);
+        preg_match('/class\s+(\w+)/', $content, $class);
+
+        if (!isset($ns[1], $class[1])) {
+            return null;
+        }
+
+        return $ns[1] . '\\' . $class[1];
     }
 }
