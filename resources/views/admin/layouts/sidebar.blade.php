@@ -63,17 +63,19 @@
                         @endcan
                     </ul>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a
-                                href="{{ route('admin.roles.index') }}"
-                                class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}"
-                            >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Roles
-                                </p>
-                            </a>
-                        </li>
+                        @can('roles.view_all')
+                            <li class="nav-item">
+                                <a
+                                    href="{{ route('admin.roles.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Roles
+                                    </p>
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
                 <li class="nav-item">
