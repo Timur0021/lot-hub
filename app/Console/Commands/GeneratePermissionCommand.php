@@ -27,10 +27,18 @@ class GeneratePermissionCommand extends Command
             ->values();
 
         $actions = [
+            'view_all',
             'view',
             'create',
             'update',
             'delete',
+            'delete_any',
+            'force_delete',
+            'force_delete_any',
+            'restore',
+            'restore_any',
+            'replicate',
+            'reorder',
         ];
 
         $existing = Permission::query()
