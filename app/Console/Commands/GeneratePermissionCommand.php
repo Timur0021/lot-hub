@@ -7,6 +7,7 @@ use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 #[Signature('permissions:generate')]
 #[Description('Generate permissions for all models')]
@@ -25,6 +26,8 @@ class GeneratePermissionCommand extends Command
             ->filter()
             ->unique()
             ->values();
+
+        $models->push(Role::class);
 
         $actions = [
             'view_all',
