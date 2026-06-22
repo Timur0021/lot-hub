@@ -48,17 +48,19 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a
-                                href="{{ route('admin.team.index') }}"
-                                class="nav-link {{ request()->routeIs('admin.team.*') ? 'active' : '' }}"
-                            >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Admins
-                                </p>
-                            </a>
-                        </li>
+                        @can('admins.view_all')
+                            <li class="nav-item">
+                                <a
+                                    href="{{ route('admin.team.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.team.*') ? 'active' : '' }}"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Admins
+                                    </p>
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
