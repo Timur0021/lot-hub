@@ -11,10 +11,14 @@
                     <div class="card-tools d-flex align-items-center gap-2">
                         <x-admin.per-page />
 
-                        <a href="{{ route('admin.team.create') }}" type="button" class="btn btn-outline-primary btn-lg px-4  mr-4">
-                            Create
-                        </a>
-
+                        @can('admins.create')
+                            <a
+                                href="{{ route('admin.team.create') }}"
+                                class="btn btn-outline-primary btn-lg px-4 mr-4"
+                            >
+                                Create
+                            </a>
+                        @endcan
 
                         <x-admin.search-input name="admin_search" width="350px"/>
                     </div>
@@ -82,27 +86,31 @@
                                         {{ $admin->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}
                                     </td>
                                     <td>
-                                        <a
-                                            href="{{ route('admin.team.edit', $admin->id) }}"
-                                            class="btn btn-sm btn-primary"
-                                        >
-                                            <i class="fas fa-edit"></i>
-                                            Edit
-                                        </a>
-                                        <form
-                                            action="{{ route('admin.team.delete', $admin->id) }}"
-                                            method="POST"
-                                            style="display:inline-block"
-                                            onsubmit="return confirm('Are you sure?')"
-                                        >
-                                            @csrf
-                                            @method('DELETE')
+                                        @can('admins.update')
+                                            <a
+                                                href="{{ route('admin.team.edit', $admin->id) }}"
+                                                class="btn btn-sm btn-primary"
+                                            >
+                                                <i class="fas fa-edit"></i>
+                                                Edit
+                                            </a>
+                                        @endcan
+                                        @can('admins.delete')
+                                            <form
+                                                action="{{ route('admin.team.delete', $admin->id) }}"
+                                                method="POST"
+                                                style="display:inline-block"
+                                                onsubmit="return confirm('Are you sure?')"
+                                            >
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                                Delete
-                                            </button>
-                                        </form>
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty
