@@ -15,7 +15,6 @@
             <div class="info">
                 <a href="#" class="d-block">
                     {{ auth('admin')->user()->name }} {{ auth('admin')->user()?->last_name }}
-
                 </a>
             </div>
         </div>
@@ -49,7 +48,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                      <!---  @can('admins.view_all')`-->
+                        @can('admins.view_all')
                             <li class="nav-item">
                                 <a
                                     href="{{ route('admin.team.index') }}"
@@ -61,10 +60,10 @@
                                     </p>
                                 </a>
                             </li>
-                        <!--@endcan -->
+                        @endcan
                     </ul>
                     <ul class="nav nav-treeview">
-                       <!--- @can('roles.view_all') -->
+                       @can('roles.view_all')
                             <li class="nav-item">
                                 <a
                                     href="{{ route('admin.roles.index') }}"
@@ -76,7 +75,7 @@
                                     </p>
                                 </a>
                             </li>
-                        <!--@endcan -->
+                        @endcan
                     </ul>
                 </li>
                 <li class="nav-item">
