@@ -78,51 +78,31 @@
                         @endcan
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item menu-open">
                     <a
                         href="#"
-                        class="nav-link"
+                        class="nav-link active"
                     >
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Tables
-                            <i class="fas fa-angle-left right"></i>
+                            Lots
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a
-                                href="pages/tables/simple.html"
-                                class="nav-link"
-                            >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Simple Tables
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                href="pages/tables/data.html"
-                                class="nav-link"
-                            >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    DataTables
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                href="pages/tables/jsgrid.html"
-                                class="nav-link"
-                            >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    jsGrid
-                                </p>
-                            </a>
-                        </li>
+                        @can('currencys.view_all')
+                            <li class="nav-item">
+                                <a
+                                    href="{{ route('admin.currency.index') }}"
+                                    class="nav-link {{ request()->routeIs('admin.currency.*') ? 'active' : '' }}"
+                                >
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Currencies
+                                    </p>
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             </ul>
