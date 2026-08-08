@@ -15,7 +15,7 @@ Route::prefix('currency')
         Route::get('/create', [CreateController::class, 'create'])->name('create');
         Route::post('/', [StoreController::class, 'store'])->name('store');
 
-        //Route::get('/{admin}/edit', [EditController::class, 'edit'])->name('edit');
-        //Route::put('/{admin}', [UpdateController::class, 'update'])->name('update');
-        //Route::delete('/{admin}', [DeleteController::class, 'delete'])->name('delete');
+        Route::get('/{currency}/edit', [EditController::class, 'edit'])->name('edit');
+        Route::put('/{currency}', [UpdateController::class, 'update'])->name('update');
+        Route::delete('/{currency}', [DeleteController::class, 'delete'])->name('delete');
     });
