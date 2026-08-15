@@ -11,4 +11,5 @@ Route::prefix('admin')
         require __DIR__.'/sections/dashboard.php';
         require __DIR__.'/sections/team.php';
         require __DIR__.'/sections/roles.php';
+        require __DIR__.'/sections/currency.php';
     });
