@@ -1,0 +1,77 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+
+        container_name: lot-hub-app
+
+        working_dir: /var/www/html
+
+        volumes:
+            - .:/var/www/html
+
+        ports:
+            - "8000:8000"
+            - "8080:8080"
+
+        depends_on:
+            - mysql
+            - redis
+
+    node:
+        image: node:24
+
+        container_name: lot-hub-node
+
+        working_dir: /var/www/html
+
+        volumes:
+            - .:/var/www/html
+
+        ports:
+            - "5173:5173"
+
+        command: sh -c "npm install && npm run dev -- --host"
+
+    mysql:
+        image: mysql:8.4
+
+        container_name: lot-hub-mysql
+
+        environment:
+            MYSQL_DATABASE: lot_hub
+            MYSQL_ROOT_PASSWORD: root
+
+        ports:
+            - "3308:3306"
+
+        volumes:
+            - mysql_data:/var/lib/mysql
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+
+        container_name: lot-hub-phpmyadmin
+
+        depends_on:
+            - mysql
+
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            MYSQL_ROOT_PASSWORD: root
+
+        ports:
+            - "8081:80"
+
+    redis:
+        image: redis:8
+
+        container_name: lot-hub-redis
+
+        ports:
+            - "6379:6379"
+
+volumes:
+    mysql_data:
