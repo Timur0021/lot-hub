@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin\Currency;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCurrencyRequest extends FormRequest
 {
@@ -23,7 +24,12 @@ class UpdateCurrencyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => ['required', 'string', 'size:3', 'unique:currencies,code'],
+            'code' => [
+                'required',
+                'string',
+                'size:3',
+                Rule::unique('currencies', 'code')->ignore($this->route('currency'))
+            ],
             'name' => ['required', 'string'],
             'symbol' => ['nullable', 'string', 'max:10'],
             'rate' => ['required', 'numeric', 'min:0'],
