@@ -201,6 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 await loadMessages(receiverId);
+
+                const directChat =
+                    contact.closest('.direct-chat');
+
+                if (directChat) {
+                    directChat.classList.remove(
+                        'direct-chat-contacts-open'
+                    );
+                }
             });
         });
 
