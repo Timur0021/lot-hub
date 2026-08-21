@@ -72,10 +72,10 @@
                                         {{ $currency->rate}}
                                     </td>
                                     <td>
-                                        {{ $currency->is_base ? 'Yes' : 'No'}}
+                                        <x-admin.boolean-badge :value="$currency->is_base" />
                                     </td>
                                     <td>
-                                        {{ $currency->active ? 'Yes' : 'No'}}
+                                        <x-admin.boolean-badge :value="$currency->active" />
                                     </td>
                                     <td>
                                         {{ $currency->created_at->timezone('Europe/Kyiv')->format('d.m.Y') }}
