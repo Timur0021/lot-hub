@@ -9,8 +9,6 @@
                     <h3 class="card-title">Currencies Table</h3>
 
                     <div class="card-tools d-flex align-items-center gap-2">
-                        <x-admin.per-page />
-
                         @can('currencys.create')
                             <a
                                 href="{{ route('admin.currency.create') }}"
@@ -19,8 +17,6 @@
                                 Create
                             </a>
                         @endcan
-
-                        <x-admin.search-input name="admin_search" width="350px"/>
                     </div>
                 </div>
                 <!-- /.card-header -->
