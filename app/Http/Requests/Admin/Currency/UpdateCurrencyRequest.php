@@ -28,13 +28,52 @@ class UpdateCurrencyRequest extends FormRequest
                 'required',
                 'string',
                 'size:3',
-                Rule::unique('currencies', 'code')->ignore($this->route('currency'))
+                Rule::unique('currencies', 'code')
+                    ->ignore($this->route('currency')),
             ],
-            'name' => ['required', 'string'],
-            'symbol' => ['nullable', 'string', 'max:10'],
-            'rate' => ['required', 'numeric', 'min:0'],
-            'is_base' => ['boolean'],
-            'active' => ['boolean'],
+
+            'name' => [
+                'required',
+                'array',
+            ],
+
+            'name.uk' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'name.en' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'name.fr' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'symbol' => [
+                'nullable',
+                'string',
+                'max:10',
+            ],
+
+            'rate' => [
+                'required',
+                'numeric',
+                'min:0',
+            ],
+
+            'is_base' => [
+                'boolean',
+            ],
+
+            'active' => [
+                'boolean',
+            ],
         ];
     }
 
@@ -45,6 +84,10 @@ class UpdateCurrencyRequest extends FormRequest
             'code.string' => 'Code must be a valid string.',
             'code.size' => 'Code must be 3 characters.',
             'code.unique' => 'This code is already taken.',
+
+            'name.uk.required' => 'Ukrainian name is required.',
+            'name.en.required' => 'English name is required.',
+            'name.fr.required' => 'French name is required.',
         ];
     }
 }

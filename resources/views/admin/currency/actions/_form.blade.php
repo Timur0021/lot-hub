@@ -15,22 +15,21 @@
     @enderror
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Name</label>
-    <input
-        type="text"
-        name="name"
-        class="form-control"
-        placeholder="e.g. US Dollar"
-        value="{{ old('name', $currency->name ?? '') }}"
-    >
-
-    @error('name')
-        <span class="invalid-feedback d-block">
-            {{ $message }}
-        </span>
-    @enderror
-</div>
+<x-admin.translatable-input
+    name="name"
+    label="Name"
+    :model="$currency ?? null"
+    :locales="[
+        'uk' => '🇺🇦 Українська',
+        'en' => '🇬🇧 English',
+        'fr' => '🇫🇷 Français',
+    ]"
+    :placeholders="[
+        'uk' => 'Наприклад: Долар США',
+        'en' => 'e.g. US Dollar',
+        'fr' => 'Par exemple : le dollar américain',
+    ]"
+/>
 
 <div class="mb-3">
     <label class="form-label">Symbol</label>

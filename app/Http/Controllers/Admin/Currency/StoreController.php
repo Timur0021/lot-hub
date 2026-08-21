@@ -8,6 +8,7 @@ use App\Services\Admin\CurrencyService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\Currency\StoreCurrencyRequest;
 use Illuminate\Session\Store;
+use Throwable;
 
 class StoreController extends Controller
 {
@@ -21,6 +22,9 @@ class StoreController extends Controller
         $this->currencyService = $currencyService;
     }
 
+    /**
+     * @throws Throwable
+     */
     public function store(StoreCurrencyRequest $request): RedirectResponse
     {
         $this->currencyService->createCurrency(

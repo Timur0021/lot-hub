@@ -16,7 +16,7 @@ class CurrencyService
     public function createCurrency(array $data): Currency
     {
         try {
-            $currency = Currency::query()
+            return Currency::query()
                 ->create([
                     'code' => $data['code'],
                     'name' => $data['name'],
@@ -25,8 +25,6 @@ class CurrencyService
                     'is_base' => $data['is_base'] ?? false,
                     'active' => $data['active'] ?? true,
                 ]);
-
-                return $currency;
         } catch (Throwable $e) {
             Log::error(
                 json_encode([
