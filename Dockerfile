@@ -9,14 +9,22 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libonig-dev \
     libxml2-dev \
-    default-mysql-client
-
-RUN docker-php-ext-install \
-    pdo_mysql \
-    mbstring \
-    intl \
-    zip \
-    pcntl
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    default-mysql-client \
+    && docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
+        --with-webp \
+    && docker-php-ext-install \
+        pdo_mysql \
+        mbstring \
+        intl \
+        zip \
+        pcntl \
+        gd
 
 RUN pecl install redis && docker-php-ext-enable redis
 

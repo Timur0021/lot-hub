@@ -12,4 +12,5 @@ Route::prefix('admin')
         require __DIR__.'/sections/team.php';
         require __DIR__.'/sections/roles.php';
         require __DIR__.'/sections/currency.php';
+        require __DIR__.'/sections/chat.php';
     });

@@ -73,5 +73,25 @@ services:
         ports:
             - "6379:6379"
 
+    reverb:
+        build:
+            context: .
+            dockerfile: Dockerfile
+
+        container_name: lot-hub-reverb
+
+        working_dir: /var/www/html
+
+        volumes:
+            - .:/var/www/html
+
+        ports:
+            - "8090:8090"
+
+        depends_on:
+            - redis
+
+        command: php artisan reverb:start --host=0.0.0.0 --port=8090
+
 volumes:
     mysql_data:
