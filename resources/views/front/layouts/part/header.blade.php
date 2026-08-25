@@ -22,11 +22,16 @@
                             <a href="#0" class="international-shopping d-lg-block d-none "> FREE SHIPPING OVER
                                 $200. INTERNATIONAL SHIPPING AVAILABLE. </a>
                             <div class=" d-flex align-items-center ">
-                                <div class="language currency"> <select>
-                                        <option>USD</option>
+                                <div class="language currency">
+                                    <select>
+                                        @foreach($currencies as $currency)
+                                            <option value="{{ $currency->id }}">{{ $currency->code }}</option>
+                                        @endforeach
+                                        <!--<option>USD</option>
                                         <option value="1">INR</option>
-                                        <option value="2">BDT</option>
-                                    </select> </div>
+                                        <option value="2">BDT</option>-->
+                                    </select>
+                                </div>
                                 <div class="language"> <select>
                                         <option>ENGLISH </option>
                                         <option value="1">GERMAN</option>
