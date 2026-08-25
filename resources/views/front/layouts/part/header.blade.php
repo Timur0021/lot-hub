@@ -27,16 +27,15 @@
                                         @foreach($currencies as $currency)
                                             <option value="{{ $currency->id }}">{{ $currency->code }}</option>
                                         @endforeach
-                                        <!--<option>USD</option>
-                                        <option value="1">INR</option>
-                                        <option value="2">BDT</option>-->
                                     </select>
                                 </div>
-                                <div class="language"> <select>
-                                        <option>ENGLISH </option>
-                                        <option value="1">GERMAN</option>
-                                        <option value="4">FRENCH</option>
-                                    </select> </div>
+                                <div class="language">
+                                    <select>
+                                        @foreach($locales as $locale)
+                                            <option value="{{ $locale }}">{{ strtoupper($locale) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

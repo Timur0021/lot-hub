@@ -15,6 +15,8 @@ class HomeController extends Controller
             ->active()
             ->get();
 
-        return view('front.home', compact('currencies'));
+        $locales = config('app.locale_names');
+
+        return view('front.home', compact('currencies', 'locales'));
     }
 }
