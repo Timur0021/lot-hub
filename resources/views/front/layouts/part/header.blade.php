@@ -19,8 +19,10 @@
                                 </ul>
                             </div>
 
-                            <a href="#0" class="international-shopping d-lg-block d-none "> FREE SHIPPING OVER
-                                $200. INTERNATIONAL SHIPPING AVAILABLE. </a>
+                            <a href="#0" class="international-shopping d-lg-block d-none ">
+                                FREE SHIPPING OVER
+                                $200. INTERNATIONAL SHIPPING AVAILABLE.
+                            </a>
                             <div class=" d-flex align-items-center ">
                                 <div class="language currency">
                                     <select>

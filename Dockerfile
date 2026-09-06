@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
         intl \
         zip \
         pcntl \
-        gd
+        gd \
+        exif
 
 RUN pecl install redis && docker-php-ext-enable redis
 
