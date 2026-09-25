@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Team;
+namespace App\Http\Controllers\Admin\Team\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class DeleteController extends Controller
 {

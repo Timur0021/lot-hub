@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Team;
+namespace App\Http\Controllers\Admin\Team\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Team\Admins\StoreAdminRequest;
+use App\Http\Requests\Admin\Team\Admins\UpdateAdminRequest;
+use App\Models\Admin\Admin;
 use App\Services\Admin\AdminService;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
 
-class StoreController extends Controller
+class UpdateController extends Controller
 {
     /**
      * @var AdminService
@@ -23,9 +24,10 @@ class StoreController extends Controller
     /**
      * @throws Throwable
      */
-    public function store(StoreAdminRequest $request): RedirectResponse
+    public function update(UpdateAdminRequest $request, Admin $admin): RedirectResponse
     {
-        $this->adminService->createAdmin(
+        $this->adminService->updateAdmin(
+            $admin,
             $request->validated()
         );
 

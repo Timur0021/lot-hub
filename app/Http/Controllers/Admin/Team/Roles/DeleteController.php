@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Roles;
+namespace App\Http\Controllers\Admin\Team\Roles;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class DeleteController extends Controller

@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\Team\CreateController;
-use App\Http\Controllers\Admin\Team\DeleteController;
-use App\Http\Controllers\Admin\Team\EditController;
-use App\Http\Controllers\Admin\Team\IndexController;
-use App\Http\Controllers\Admin\Team\StoreController;
-use App\Http\Controllers\Admin\Team\UpdateController;
+use App\Http\Controllers\Admin\Team\Admins\CreateController;
+use App\Http\Controllers\Admin\Team\Admins\DeleteController;
+use App\Http\Controllers\Admin\Team\Admins\EditController;
+use App\Http\Controllers\Admin\Team\Admins\IndexController;
+use App\Http\Controllers\Admin\Team\Admins\StoreController;
+use App\Http\Controllers\Admin\Team\Admins\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('team')

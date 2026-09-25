@@ -1,21 +1,21 @@
 @extends('admin.layouts.app')
-@section('title', 'Edit Admin')
+@section('title', 'Role')
 
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Admin</h3>
+                    <h3 class="card-title">Edit Role</h3>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.team.update', $admin->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.roles.update', $role->id) }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
 
-                        @include('admin.team.actions._form', [
-                            'admin' => $admin
+                        @include('admin.team.roles.actions._form', [
+                            'role' => $role
                         ])
                     </form>
                 </div>

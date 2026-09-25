@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Roles;
+namespace App\Http\Controllers\Admin\Team\Roles;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Team\Roles\UpdateRoleRequest;
+use App\Http\Requests\Admin\Team\Roles\StoreRoleRequest;
 use App\Services\Admin\RoleService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Throwable;
 
-class UpdateController extends Controller
+class StoreController extends Controller
 {
     /**
      * @var RoleService
@@ -25,10 +23,9 @@ class UpdateController extends Controller
     /**
      * @throws Throwable
      */
-    public function update(UpdateRoleRequest $request, Role $role): RedirectResponse
+    public function store(StoreRoleRequest $request): RedirectResponse
     {
-        $this->roleService->update(
-            $role,
+        $this->roleService->create(
             $request->validated()
         );
 

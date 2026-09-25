@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\Roles\CreateController;
-use App\Http\Controllers\Admin\Roles\DeleteController;
-use App\Http\Controllers\Admin\Roles\EditController;
-use App\Http\Controllers\Admin\Roles\IndexController;
-use App\Http\Controllers\Admin\Roles\RolePermissionsController;
-use App\Http\Controllers\Admin\Roles\StoreController;
-use App\Http\Controllers\Admin\Roles\UpdateController;
+use App\Http\Controllers\Admin\Team\Roles\CreateController;
+use App\Http\Controllers\Admin\Team\Roles\DeleteController;
+use App\Http\Controllers\Admin\Team\Roles\EditController;
+use App\Http\Controllers\Admin\Team\Roles\IndexController;
+use App\Http\Controllers\Admin\Team\Roles\RolePermissionsController;
+use App\Http\Controllers\Admin\Team\Roles\StoreController;
+use App\Http\Controllers\Admin\Team\Roles\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('roles')

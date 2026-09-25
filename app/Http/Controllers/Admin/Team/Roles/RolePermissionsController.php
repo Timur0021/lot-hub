@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Roles;
+namespace App\Http\Controllers\Admin\Team\Roles;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +20,7 @@ class RolePermissionsController extends Controller
 
         $rolePermissions = $role->permissions->pluck('name')->toArray();
 
-        return view('admin.roles.permissions', compact(
+        return view('admin.team.roles.permissions', compact(
             'role',
             'permissions',
             'rolePermissions'

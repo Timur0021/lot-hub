@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Team;
+namespace App\Http\Controllers\Admin\Team\Admins;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class CreateController extends Controller
@@ -13,6 +12,6 @@ class CreateController extends Controller
     {
         $roles = Role::all();
 
-        return view('admin.team.actions.create', compact('roles'));
+        return view('admin.team.admins.actions.create', compact('roles'));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Team;
+namespace App\Http\Controllers\Admin\Team\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
@@ -25,6 +25,6 @@ class IndexController extends Controller
             })
             ->paginate($per_page);
 
-        return view('admin.team.index', compact('admins'));
+        return view('admin.team.admins.index', compact('admins'));
     }
 }

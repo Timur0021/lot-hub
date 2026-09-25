@@ -117,10 +117,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-{{--                        @can('admins.view_all')--}}
+                        @can('settings.view_all')
                             <li class="nav-item">
                                 <a
-                                    href="{{ route('admin.team.index') }}"
+                                    href="{{ route('admin.settings.index') }}"
                                     class="nav-link {{ request()->routeIs('admin.team.*') ? 'active' : '' }}"
                                 >
                                     <i class="far fa-circle nav-icon"></i>
@@ -129,7 +129,7 @@
                                     </p>
                                 </a>
                             </li>
-{{--                        @endcan--}}
+                        @endcan
                     </ul>
                 </li>
             </ul>
